@@ -1,12 +1,18 @@
-<h1>Login!</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+
+
 
 {% if error %}
 {{error}}
 <br/><br/>
 {% endif %}
+
+<div class="container">
 <form method="post" action="{% url 'accounts:login' %}">
   {% csrf_token %}
-
+<h1>Login!</h1>
 
   {% if request.GET.next %}
   <input type="hidden" name="next" value={{ request.GET.next }}/>
@@ -22,3 +28,5 @@
   <input type="submit" value="Login"/>
 
 </form>
+</div>
+{% endblock %}
